@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="showPhoto"
+            type="Boolean"
+            android:value="false" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{showPhoto?View.GONE:View.VISIBLE}"
+            android:background="@drawable/icon_main_bg">
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/icon_setting"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_all"
+                android:layout_width="164dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/image1"
+                android:fontFamily="@font/permanent_marker"
+                android:gravity="center"
+                android:text="All"
+                android:visibility="gone"
+                android:textColor="#FFFFFFFF"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/tv_favo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgBack" />
+
+            <TextView
+                android:id="@+id/tv_favo"
+                android:layout_width="164dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/permanent_marker"
+                android:gravity="center"
+                android:text="FAVORITE"
+                android:visibility="gone"
+                android:textColor="#FFFFFFFF"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_all"
+                app:layout_constraintTop_toBottomOf="@+id/imgBack" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_wall"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="32dp"
+                tools:listitem="@layout/layout_z"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_all" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{showPhoto?View.VISIBLE:View.GONE}"
+            android:background="@drawable/bg_photo">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="Phoframe"
+                android:textColor="#FFFFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/img_wall"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+            <ImageView
+                android:id="@+id/img_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/img_add_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/bg_b"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_wall"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@{showPhoto?@drawable/icon_tabbar_0:@drawable/icon_tabbar}"
+                android:fontFamily="@font/permanent_marker"
+                android:gravity="center"
+                android:paddingVertical="13dp"
+                android:text="Wallpaper"
+                android:textColor="@{showPhoto?@color/btn_0:@color/btn_1}"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_phoframe"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@{showPhoto?@drawable/icon_tabbar:@drawable/icon_tabbar_0}"
+                android:fontFamily="@font/permanent_marker"
+                android:gravity="center"
+                android:paddingVertical="13dp"
+                android:text="Phoframe"
+                android:textColor="@{showPhoto?@color/btn_1:@color/btn_0}"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
